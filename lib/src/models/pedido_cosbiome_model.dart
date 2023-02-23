@@ -281,9 +281,9 @@ class PedidoCosbiomeModel {
     if (procesoList != null) {
       final v = procesoList;
       final arr0 = [];
-      v!.forEach((v) {
+      for (var v in v!) {
         arr0.add(v);
-      });
+      }
       data['procesoList'] = arr0;
     }
     data['vendedor'] = vendedor;
@@ -293,9 +293,9 @@ class PedidoCosbiomeModel {
     if (productosCompra != null) {
       final v = productosCompra;
       final arr0 = [];
-      v!.forEach((v) {
+      for (var v in v!) {
         arr0.add(v!.toJson());
-      });
+      }
       data['productosCompra'] = arr0;
     }
     data['numTel'] = numTel;

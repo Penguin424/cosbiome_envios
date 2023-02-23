@@ -64,22 +64,23 @@ class PedidosService extends ChangeNotifier {
   }
 
   Future<List<PedidoCosbiomeModel>> handleGetPedidos() async {
-    try {
-      final pedidosDB = await Http.get("cosbiomepedidos", {
-        "_limit": 100000.toString(),
-        "ENVIO": "ENVIOMAQUINA",
-        "_sort": "nombreCliente%3AASC",
-      });
+    // try {
+    final pedidosDB = await Http.get("cosbiomepedidos", {
+      "_limit": 100000.toString(),
+      "ENVIO": "ENVIOMAQUINA",
+      "_sort": "nombreCliente%3AASC",
+    });
 
-      List<PedidoCosbiomeModel> pedidosData =
-          pedidosDB.data.map<PedidoCosbiomeModel>((e) {
-        return PedidoCosbiomeModel.fromJson(e);
-      }).toList();
+    List<PedidoCosbiomeModel> pedidosData =
+        pedidosDB.data.map<PedidoCosbiomeModel>((e) {
+      return PedidoCosbiomeModel.fromJson(e);
+    }).toList();
 
-      return pedidosData;
-    } catch (e) {
-      return [];
-    }
+    return pedidosData;
+    // } catch (e) {
+    //   print(e);
+    //   return [];
+    // }
   }
 
   Future<bool> handleConfirmPedido() async {
@@ -111,6 +112,7 @@ class PedidosService extends ChangeNotifier {
       return true;
     } catch (e) {
       updateIsLoading(false);
+
       return false;
     }
   }
